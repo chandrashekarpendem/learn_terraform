@@ -22,22 +22,22 @@ terraform {
 }
 
 module "ec2" {
-  source = "modules/ec2"
+  source = "ec2"
   ami_id=module.data.aws_ami
 
 }
 
 module "sg" {
-  source = "modules/sg"
+  source = "sg"
   vpc_id=module.vpc.vpc_id
   cidr_block=module.vpc.cidr_block
 }
 
 module "vpc" {
-  source = "modules/vpc"
+  source = "vpc"
 
 }
 
 module "data" {
-  source = "modules/data"
+  source = "data"
 }
