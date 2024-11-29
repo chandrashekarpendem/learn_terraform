@@ -16,7 +16,7 @@ terraform {
   backend "s3" {
     bucket         = "terraforminfra1"
     key            = "chandra/terraform.tfstate"
-    region         = "us-east-1"
+    region         = "eu-north-1"
 
   }
 }
