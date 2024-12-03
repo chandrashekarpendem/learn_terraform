@@ -9,7 +9,7 @@ resource "aws_subnet" "public_subnet" {
   cidr_block = var.cidr_block[count.index]
   availability_zone = var.availability_zones[count.index]
 
-  tags       = merge(local.common_tags,{ Name= "${var.env}-${count.index + 1}" })
+  tags       = merge(local.common_tags,{ Name= "${var.env}-Subnet-${count.index + 1}" })
 
 }
 
