@@ -4,7 +4,7 @@ resource "aws_vpc" "vpc-1" {
 }
 
 resource "aws_vpc" "vpc-2" {
-  cidr_block = "10.0.0.0/24"
+  cidr_block = "11.0.0.0/24"
   tags       = merge(local.common_tags,{ Name= "${var.env}-vpc" })
 }
 resource "aws_subnet" "public_subnet" {
