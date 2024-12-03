@@ -1,20 +1,14 @@
 resource "aws_vpc" "auto_vpc" {
-  cidr_block = var.cidr_block1
+  cidr_block = "10.0.0.0/16"
   tags       = merge(local.common_tags,{ Name= "${var.env}-vpc" })
 }
 
 resource "aws_subnet" "public_subnet" {
+  count      = length(var.cidr_block)
   vpc_id     = aws_vpc.auto_vpc.id
-  cidr_block = var.cidr_block2
+  cidr_block = var.cidr_block[count.index]
 
-  tags       = merge(local.common_tags,{ Name= "${var.env}-Public_subnet" })
+  tags       = merge(local.common_tags,{ Name= "${var.env}-${count.index + 1}" })
 
 }
 
-resource "aws_subnet" "private_subnet" {
-  vpc_id     = aws_vpc.auto_vpc.id
-  cidr_block = var.cidr_block3
-
-  tags       = merge(local.common_tags,{ Name= "${var.env}-private_subnet" })
-
-}
